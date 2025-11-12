@@ -12,7 +12,7 @@ cloudstream {
     // All of these properties are optional, you can safely remove them
 
     description = "Netflix, PrimeVideo, Disney+ Hotstar Contents in Multiple Languages"
-    authors = listOf("NivinCNC")
+    authors = listOf("NetMirror")
 
     /**
      * Status int as the following:
