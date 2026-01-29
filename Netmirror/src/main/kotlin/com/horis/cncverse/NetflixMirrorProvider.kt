@@ -56,10 +56,10 @@ class NetflixMirrorProvider : MainAPI() {
             "hd" to "on"
         )
         val document = app.get(
-            "https://net51.cc/mobile/home?app=1",
+            "$mainUrl/home",
             headers = headers,
             cookies = cookies,
-            referer = "https://net51.cc/",
+            referer = $newUrl,
         ).document
         val items = document.select(".tray-container, #top10").map {
             it.toHomePageList()
