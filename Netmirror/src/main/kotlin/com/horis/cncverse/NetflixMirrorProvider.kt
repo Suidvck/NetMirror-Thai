@@ -64,8 +64,8 @@ class NetflixMirrorProvider : MainAPI() {
   ): HomePageResponse? {
 
     if (cookie_value.isEmpty()) {
-  cookie_value = bypass("$mainUrl/")
-}
+      cookie_value = bypass("$mainUrl/")
+    }
 
     val cookies = mapOf(
       "t_hash_t" to cookie_value,
@@ -85,8 +85,9 @@ class NetflixMirrorProvider : MainAPI() {
       HomePageList(
         row.title,
         row.items.map {
-          newAnimeSearchResponse(it.title, Id(it.id).toJson()) {
-            posterUrl = it.poster
+          item ->
+          newAnimeSearchResponse(item.title, Id(item.id).toJson()) {
+            posterUrl = item.poster
           }
         }
       )
