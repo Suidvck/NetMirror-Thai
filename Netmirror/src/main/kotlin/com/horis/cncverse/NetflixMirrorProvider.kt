@@ -108,7 +108,7 @@ class NetflixMirrorProvider : MainAPI() {
       "hd" to "on"
     )
     val data = app.get(
-      "$mainUrl/post.php?id=$id&t=${APIHolder.unixTime}",
+      "$mainUrl/post.php?id=$id&in=${APIHolder.unixTime}",
       headers,
       referer = "$mainUrl/tv/home",
       cookies = cookies
