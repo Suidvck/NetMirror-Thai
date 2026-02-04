@@ -25,8 +25,8 @@ class HotStarMirrorProvider : MainAPI() {
     )
     override var lang = "hi"
 
-    override var mainUrl = "https://net20.cc"
-    private var newUrl = "https://net51.cc"
+    override var mainUrl = "https://net22.cc"
+    private var newUrl = "https://net52.cc"
     override var name = "HotStar"
 
     override val hasMainPage = true
@@ -45,7 +45,7 @@ class HotStarMirrorProvider : MainAPI() {
         val document = app.get(
             "$mainUrl/mobile/home",
             cookies = cookies,
-            referer = "$mainUrl/tv/home",
+            referer = "$mainUrl/home",
         ).document
         val items = document.select(".tray-container, #top10").map {
             it.toHomePageList()
@@ -101,7 +101,7 @@ class HotStarMirrorProvider : MainAPI() {
         val data = app.get(
             "$mainUrl/mobile/hs/post.php?id=$id&t=${APIHolder.unixTime}",
             headers,
-            referer = "$mainUrl/tv/home",
+            referer = "$mainUrl/home",
             cookies = cookies
         ).parsed<PostData>()
 
@@ -172,7 +172,7 @@ class HotStarMirrorProvider : MainAPI() {
             val data = app.get(
                 "$mainUrl/mobile/hs/episodes.php?s=$sid&series=$eid&t=${APIHolder.unixTime}&page=$pg",
                 headers,
-                referer = "$mainUrl/tv/home",
+                referer = "$mainUrl/home",
                 cookies = cookies
             ).parsed<EpisodesData>()
             data.episodes?.mapTo(episodes) {
@@ -203,9 +203,9 @@ class HotStarMirrorProvider : MainAPI() {
             "ott" to "hs"
         )
         val playlist = app.get(
-            "$mainUrl/mobile/hs/playlist.php?id=$id&t=$title&tm=${APIHolder.unixTime}",
+            "$newUrl/mobile/hs/playlist.php?id=$id&t=$title&tm=${APIHolder.unixTime}",
             headers,
-            referer = "$mainUrl/tv/home",
+            referer = "$newUrl/home",
             cookies = cookies
         ).parsed<PlayList>()
 
@@ -218,7 +218,7 @@ class HotStarMirrorProvider : MainAPI() {
                         "$newUrl/${it.file}",
                         type = ExtractorLinkType.M3U8
                     ) {
-                        this.referer = "$newUrl/home"
+                        this.referer = "$newUrl/"
                         this.quality = getQualityFromName(it.file.substringAfter("q=", ""))
                     }
                 )

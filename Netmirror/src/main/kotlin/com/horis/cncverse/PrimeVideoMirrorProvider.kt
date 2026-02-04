@@ -27,8 +27,8 @@ class PrimeVideoMirrorProvider : MainAPI() {
     )
     override var lang = "hi"
 
-    override var mainUrl = "https://net20.cc"
-    private var newUrl = "https://net51.cc"
+    override var mainUrl = "https://net22.cc"
+    private var newUrl = "https://net52.cc"
     override var name = "PrimeVideo"
 
     override val hasMainPage = true
@@ -47,7 +47,7 @@ class PrimeVideoMirrorProvider : MainAPI() {
         val data = app.get(
             "$mainUrl/tv/pv/homepage.php",
             cookies = cookies,
-            referer = "$mainUrl/tv/home",
+            referer = "$mainUrl/home",
         ).parsed<MainPage>()
 
         val items = data.post.map {
@@ -206,9 +206,9 @@ class PrimeVideoMirrorProvider : MainAPI() {
             "hd" to "on"
         )
         val playlist = app.get(
-            "$mainUrl/tv/pv/playlist.php?id=$id&t=$title&tm=${APIHolder.unixTime}",
+            "$newUrl/pv/playlist.php?id=$id&t=$title&tm=${APIHolder.unixTime}",
             headers,
-            referer = "$mainUrl/tv/home",
+            referer = "$newUrl/home",
             cookies = cookies
         ).parsed<PlayList>()
 
@@ -218,10 +218,10 @@ class PrimeVideoMirrorProvider : MainAPI() {
                     newExtractorLink(
                         name,
                         it.label,
-                        "https://net51.cc${it.file.replace("/tv/", "/")}",
+                        "${newUrl}${it.file}",,
                         type = ExtractorLinkType.M3U8
                     ) {
-                        this.referer = "https://net51.cc/"
+                        this.referer = "$newUrl/"
                         this.quality = getQualityFromName(it.file.substringAfter("q=", ""))
                     }
                 )
