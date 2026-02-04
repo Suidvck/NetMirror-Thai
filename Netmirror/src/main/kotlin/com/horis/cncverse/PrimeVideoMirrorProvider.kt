@@ -218,7 +218,7 @@ class PrimeVideoMirrorProvider : MainAPI() {
                     newExtractorLink(
                         name,
                         it.label,
-                        "${newUrl}${it.file}",,
+                        "${newUrl}${it.file}",
                         type = ExtractorLinkType.M3U8
                     ) {
                         this.referer = "$newUrl/"
