@@ -23,7 +23,7 @@ class HotStarMirrorProvider : MainAPI() {
     TvType.Movie,
     TvType.TvSeries,
   )
-  override var lang = "hi"
+  override var lang = "th"
 
   override var mainUrl = "https://net22.cc"
   private var newUrl = "https://net52.cc"
